@@ -11,8 +11,8 @@ const Button = styled.button`
     background-color: yellow;
 `
 const Container = styled.div`
-    width:500px;
-    height:500px;
+    width:320px;
+    height:320px;
     margin-top: 5px;
     margin-bottom: 5px;
     margin-left: 5px;
@@ -21,11 +21,12 @@ const Container = styled.div`
     color: skyblue;
     border: solid;
     display:grid;
+    
 
 `
 const Image = styled.img`
-    width: 400px;
-    height: 400px;
+    width: 200px;
+    height: 200px;
     margin-top: 20px;
     margin-bottom: 10px;
     margin-left: 10px;
@@ -33,10 +34,10 @@ const Image = styled.img`
 
 `
 const Wrapper = styled.section`
-    background: yellowgreen;
-    padding: 2rem;
-    margin-right: 2rem;
     display: grid;
+    grid-template-columns: repeat(3, 0.5fr);
+    grid-template-rows: max-content;
+    grid-gap: 5px;
 `
 const Products = () => {
     const [products,Updateproducts] = useState([])
@@ -46,21 +47,23 @@ const Products = () => {
         Updateproducts(res.data.data.product)
     },[])
     return(
+        <>
+        Welcome To The Electroic Shop
+        
         <Wrapper>
-        Hey You get The All Product Here From The server
         {products.map(pro=>{
             return(
-                <Wrapper>
                 <Container key={pro.id}>
                     <Image  height="300px" width="400px" src = {`https://electronic-ecommerce.herokuapp.com/${pro.image}`}></Image>
                     Name:{pro.name}
                     Price:{pro.price}
                     <Button>Add To Cart</Button>
                 </Container>
-                </Wrapper>
+            
             )
         })}
         </Wrapper>
+        </>
     )
 }
 export default Products
