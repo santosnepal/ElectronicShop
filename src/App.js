@@ -1,9 +1,11 @@
 import logo from './logo.svg';
-
+import Products from './Components/Products';
 
 function App() {
   return (
-    <h1>Welcome to electronic Shop</h1>
+    <>
+    <Products/>
+    </>
   )
 }
 
