@@ -6,38 +6,51 @@ const Button = styled.button`
     height:50px;
     margin-top: 10px;
     margin-bottom: 10px;
-    margin-left: 5px;
+    margin-left: 100px;
     text-align: center;
-    background-color: yellow;
+    font-weight: bold;
+    font-size: 1.5rem;
+    align-items: center;
+    background-color: goldenrod;
+    border-radius: 3rem;
+    border-color: green;
+    
 `
 const Container = styled.div`
-    width:320px;
-    height:320px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    margin-left: 5px;
-    margin-right: 5px;
     content: icon;
-    color: skyblue;
+    color: red;
+    background-color: skyblue;
     border: solid;
     display:grid;
     
 
 `
 const Image = styled.img`
-    width: 200px;
-    height: 200px;
-    margin-top: 20px;
-    margin-bottom: 10px;
-    margin-left: 10px;
-    margin-right: 10px;
+    padding: 0.5rem;
 
 `
 const Wrapper = styled.section`
+    margin-top: 0.1rem;
     display: grid;
     grid-template-columns: repeat(3, 0.5fr);
     grid-template-rows: max-content;
     grid-gap: 5px;
+    size: inherit;
+`
+const Text = styled.span`
+    font-size: 1rem;
+    /* text-size-adjust:auto; */
+    color: black;
+    text-align-last: center;
+`
+const Nav = styled.nav`
+  background: #63D471;
+  height: 85px;
+  display: grid;
+  text-align: center;
+  /* justify-content: space-between;
+  padding: 0.2rem calc((100vw - 1000px) / 2);
+  z-index: 12; */
 `
 const Products = () => {
     const [products,Updateproducts] = useState([])
@@ -48,15 +61,16 @@ const Products = () => {
     },[])
     return(
         <>
-        Welcome To The Electroic Shop
-        
+        <Nav><h1>Electronic Shop</h1></Nav>
         <Wrapper>
         {products.map(pro=>{
             return(
                 <Container key={pro.id}>
                     <Image  height="300px" width="400px" src = {`https://electronic-ecommerce.herokuapp.com/${pro.image}`}></Image>
-                    Name:{pro.name}
-                    Price:{pro.price}
+                    <Text>Name : {pro.name}</Text>
+                    <Text>Price : {pro.price}</Text>
+                    <Text>Created Date : {pro.createDate}</Text>
+                    <Text>Stock : {pro.stock}</Text>
                     <Button>Add To Cart</Button>
                 </Container>
             
